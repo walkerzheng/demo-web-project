@@ -1,9 +1,7 @@
 Overview
 --------
 
-The skeleton of the demo web project for CS480.
-
-This project is designed to let you practice the different aspects of software engineering, such as version control, design, tests, build, deployment, and maintenance.
+This is a app application using Java Spring Framework.
 
 Environment Setup
 -----------------
