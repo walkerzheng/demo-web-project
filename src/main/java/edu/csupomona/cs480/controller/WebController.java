@@ -37,6 +37,22 @@ public class WebController {
 	@Autowired
 	private UserManager userManager;
 
+	@RequestMapping(value = "/api/test", method = RequestMethod.GET)
+	String testGetApi() {
+		// You can replace this with other string,
+		// and run the application locally to check your changes
+		// with the URL: http://localhost:8080/
+		return "This is a test api";
+	}
+
+	@RequestMapping(value = "/api/test", method = RequestMethod.POST)
+	String testPostApi() {
+		// You can replace this with other string,
+		// and run the application locally to check your changes
+		// with the URL: http://localhost:8080/
+		return "Post Data";
+	}
+
 	/**
 	 * This is a simple example of how the HTTP API works.
 	 * It returns a String "OK" in the HTTP response.
