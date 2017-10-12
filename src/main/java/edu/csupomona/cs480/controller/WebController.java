@@ -1,7 +1,12 @@
 package edu.csupomona.cs480.controller;
 
+import java.io.IOException;
 import java.util.List;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,10 +44,21 @@ public class WebController {
 
 	@RequestMapping(value = "/api/test", method = RequestMethod.GET)
 	String testGetApi() {
-		// You can replace this with other string,
-		// and run the application locally to check your changes
-		// with the URL: http://localhost:8080/
-		return "This is a test api";
+		Document doc;
+		String output = "";
+		try {
+			doc = Jsoup.connect("http://google.com").get();
+			output = doc.title();
+			Elements links = doc.select("a[href]");
+			for (Element link : links) {
+				output += "\nlinks: ";
+				output += link.attr("href");
+				output += (" text: " + link.text());
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return output;
 	}
 
 	@RequestMapping(value = "/api/test", method = RequestMethod.POST)
